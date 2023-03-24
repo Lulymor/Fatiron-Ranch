@@ -12,22 +12,22 @@ if __name__ == '__main__':
 
         print("Seeding animals...")
         animals = [
-            Animal(name="Phillip", type="goat", age="5"),
-            Animal(name="Ed", type="horse", age="12"),
-            Animal(name="Mantou", type="dog", age="6"),
-            Animal(name="Rocky Rhodes", type="rooster", age="7"),
-            Animal(name="Ginger", type="hen", age="3"),
-            Animal(name="Stubbs", type="cat", age="10")
+            Animal(name="Phillip", species="goat", age="5"),
+            Animal(name="Ed", species="horse", age="12"),
+            Animal(name="Mantou", species="dog", age="6"),
+            Animal(name="Rocky Rhodes", species="rooster", age="7"),
+            Animal(name="Ginger", species="hen", age="3"),
+            Animal(name="Stubbs", species="cat", age="10")
         ]
 
         db.session.add_all(animals)
 
         print("Seeding enclosures...")
         enclosures = [
-            Enclosure(type="barn"),
-            Enclosure(type="stable"),
-            Enclosure(type="coop"),
-            Enclosure(type="house")
+            Enclosure(area="barn"),
+            Enclosure(area="stable"),
+            Enclosure(area="coop"),
+            Enclosure(area="house")
         ]
 
         db.session.add_all(enclosures)
@@ -37,10 +37,11 @@ if __name__ == '__main__':
         animals_enclosures = []
         for enclosure in enclosures:
             animal = rc(animals)
-            animal_enclosures.append(
-                AnimalEnclosure(enclosure=enclosure, animal=animal, food=rc(foods))
+            animals_enclosures.append(
+                AnimalEnclosure(enclosure=enclosure,
+                                animal=animal, food=rc(foods))
             )
-        db.session.add_all(animal_enclosures)
+        db.session.add_all(animals_enclosures)
         db.session.commit()
 
         print("Done seeding!")
