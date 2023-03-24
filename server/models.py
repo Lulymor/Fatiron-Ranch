@@ -10,51 +10,53 @@ metadata = MetaData(naming_convention={
 
 db = SQLAlchemy(metadata=metadata)
 
+
 class Animal(db.Model):
     __tablename__ = 'animals'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    type = db.Column(db.String)
+    name = db.Column(db.String, unique=True)
+    species = db.Column(db.String)
     age = db.Column(db.String)
 
     animal_enclosures = db.relationship('AnimalEnclosure', backref='animal')
     enclosures = association_proxy('animal_enclosures', 'enclosure',
-        creator=lambda enc: AnimalEnclosure(enclosure=enc))
-    
+                                   creator=lambda enc: AnimalEnclosure(enclosure=enc))
+
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
-            'type': self.type,
+            'species': self.species,
             'age': self.age,
             'enclosures': [e.to_dict() for e in self.enclosures]
         }
-    
 
     def __repr__(self):
         return f'<Animal {self.id}>'
-    
+
+
 class Enclosure(db.Model):
     __tablename__ = 'enclosures'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    description = db.Column(db.String)
+    area = db.Column(db.String)
 
-    animal_enclosures = db.relationship('AnimalEnclosure', backref='enclosure')
+    animals_enclosures = db.relationship(
+        'AnimalEnclosure', backref='enclosure')
     animals = association_proxy('animal_enclosures', 'animal',
-        creator=lambda an: HeroPower(animal=an))
-    
+                                creator=lambda an: AnimalEnclosure(animal=an))
+
     def to_dict(self):
         return {
             'id': self.id,
-            'name': self.name,
+            'area': self.area,
         }
 
     def __repr__(self):
         return f'<Enclosure {self.id}>'
-    
+
+
 class AnimalEnclosure(db.Model):
     __tablename__ = 'animal_enclosures'
 
