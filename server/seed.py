@@ -12,12 +12,12 @@ if __name__ == '__main__':
 
         print("Seeding animals...")
         animals = [
-            Animal(name="Phillip", species="goat", age="5"),
-            Animal(name="Ed", species="horse", age="12"),
-            Animal(name="Mantou", species="dog", age="6"),
-            Animal(name="Rocky Rhodes", species="rooster", age="7"),
-            Animal(name="Ginger", species="hen", age="3"),
-            Animal(name="Stubbs", species="cat", age="10")
+            Animal(name="Phillip", species="goat", age="5", image='https://ih1.redbubble.net/image.1463467902.4612/st,small,507x507-pad,600x600,f8f8f8.jpg'),
+            Animal(name="Ed", species="horse", age="12", image='https://ih1.redbubble.net/image.1467110377.3128/st,small,507x507-pad,600x600,f8f8f8.jpg'),
+            Animal(name="Mantou", species="dog", age="6", image='https://ih1.redbubble.net/image.1085113468.8236/st,small,507x507-pad,600x600,f8f8f8.jpg'),
+            Animal(name="Rocky Rhodes", species="rooster", age="7", image='https://ih1.redbubble.net/image.1951125948.0423/st,small,845x845-pad,1000x1000,f8f8f8.jpg'),
+            Animal(name="Ginger", species="hen", age="3", image='https://ih1.redbubble.net/image.1153761609.3894/st,small,507x507-pad,600x600,f8f8f8.jpg'),
+            Animal(name="Stubbs", species="cat", age="10", image='https://ih1.redbubble.net/image.1173752943.7210/st,small,507x507-pad,600x600,f8f8f8.jpg')
         ]
 
         db.session.add_all(animals)

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
-//when the app starts, I can see all the plants
-//I can add a new plant to the page by submitting the form.
+import { Button } from "react-bootstrap";
 
 function NewAnimalForm({ onAdd }) {
   const [species, setSpecies] = useState("");
@@ -30,8 +28,8 @@ function NewAnimalForm({ onAdd }) {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="species type"
-          placeholder="Species Type"
+          name="species"
+          placeholder="species"
           value={species}
           onChange={(event) => setSpecies(event.target.value)}
         />
@@ -50,7 +48,9 @@ function NewAnimalForm({ onAdd }) {
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
-        <button type="submit">Add Animal</button>
+        <Button type="submit" variant="light">
+          Add Animal
+        </Button>
       </form>
     </div>
   );

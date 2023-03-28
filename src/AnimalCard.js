@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 
-function AnimalCard({ species, age, name }) {
-  const [isInStock, setIsInStock] = useState(true);
-
-  function handleStock() {
-    setIsInStock((isInStock) => !isInStock);
+function AnimalCard({ species, name, age, image }) {
+  function handleClick() {
+    console.log("clicked");
   }
+
   return (
     <li className="card">
-      <h4>{species}</h4>
+      <img src={image}></img>
       <h4>{name}</h4>
+      <h4>{species}</h4>
       <p>Age:{age}</p>
-      {isInStock ? (
-        <button className="primary" onClick={handleStock}>
-          In Stock
-        </button>
-      ) : (
-        <button onClick={handleStock}>Out of Stock</button>
-      )}
+      <button class="primary" onClick={handleClick}>
+        Delete
+      </button>
     </li>
   );
 }

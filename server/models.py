@@ -18,6 +18,7 @@ class Animal(db.Model):
     name = db.Column(db.String, unique=True)
     species = db.Column(db.String)
     age = db.Column(db.String)
+    image = db.Column(db.String)
 
     animal_enclosures = db.relationship('AnimalEnclosure', backref='animal')
     enclosures = association_proxy('animal_enclosures', 'enclosure',
@@ -29,6 +30,7 @@ class Animal(db.Model):
             'name': self.name,
             'species': self.species,
             'age': self.age,
+            'image': self.image,
             'enclosures': [e.to_dict() for e in self.enclosures]
         }
 
