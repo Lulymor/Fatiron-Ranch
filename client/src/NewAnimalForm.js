@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 
-//when the app starts, I can see all the plants
-//I can add a new plant to the page by submitting the form.
-
 function NewAnimalForm({ onAdd }) {
   const [species, setSpecies] = useState("");
   const [age, setAge] = useState("");
