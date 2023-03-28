@@ -6,7 +6,7 @@ function Header() {
       <h1>
         FLAT RANCH
         <span className="logo" role="img">
-        🐮🤠🌾🐗
+          🐮🤠🌾🐗
         </span>
       </h1>
     </header>
