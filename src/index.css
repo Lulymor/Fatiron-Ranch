@@ -9,7 +9,8 @@
 }
 
 body {
-  font-family: "Playfair Display", serif;
+  font-family: 'Ranchers', cursive;
+
 }
 
 h2 {
@@ -24,7 +25,7 @@ button {
 }
 
 button.primary {
-  background-color: var(--green);
+  background-color: blue;
   color: white;
 }
 
@@ -54,7 +55,7 @@ main {
 .new-animal-form {
   padding: 2rem 1rem;
   margin: 2rem 0;
-  background-color: rgba(181, 250, 181, 0.5);
+  background-color: rgba(145, 63, 27, 0.5);
 }
 
 .new-animal-form form {
@@ -94,7 +95,16 @@ input {
 
 input:focus {
   outline: none;
-  border-bottom: 2px solid var(--green);
+  border-bottom: 2px solid brown;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0px;
+  align-items: center;
+  min-height: 8vh;
 }
 
 .cards {

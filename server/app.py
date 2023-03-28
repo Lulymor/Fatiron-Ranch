@@ -1,7 +1,7 @@
 
 from flask import Flask, make_response, request, jsonify
 from flask_migrate import Migrate
-
+from flask_cors import CORS
 
 from models import db, Animal, Enclosure, AnimalEnclosure
 
@@ -15,6 +15,7 @@ app.json.compact = False
 migrate = Migrate(app, db)
 
 db.init_app(app)
+CORS(app)
 
 
 @app.route('/')

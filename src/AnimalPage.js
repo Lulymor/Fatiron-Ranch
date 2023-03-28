@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import NewAnimalForm from "./NewAnimalForm";
 import AnimalList from "./AnimalList";
-import Search from "./Search";
-
+import Headers from "./Headers";
 function AnimalPage() {
   const [animals, setAnimals] = useState([]);
+  const [search, setSearch] = useState("");
 
   function handleAddAnimal(newAnimal) {
     const updatedAnimal = [newAnimal, ...animals];
@@ -13,14 +13,14 @@ function AnimalPage() {
   useEffect(() => {
     fetch("http://localhost:5555/animals")
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setAnimals(data));
   }, []);
 
   return (
     <main>
+      <Headers setSearch={setSearch} />
       <NewAnimalForm onAdd={handleAddAnimal} />
-      <Search />
-      <AnimalList animals={animals} />
+      <AnimalList animals={animals} search={search} setAnimals={setAnimals} />
     </main>
   );
 }
