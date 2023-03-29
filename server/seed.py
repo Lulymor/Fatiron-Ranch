@@ -24,10 +24,10 @@ if __name__ == '__main__':
 
         print("Seeding enclosures...")
         enclosures = [
-            Enclosure(area="barn"),
-            Enclosure(area="stable"),
-            Enclosure(area="coop"),
-            Enclosure(area="house")
+            Enclosure(area="barn", image="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/06/Stardew-Valley-Barn-With-Fenced-Off-Area.jpg"),
+            Enclosure(area="stable", image="https://stardewguide.com/wp-content/uploads/2022/01/Screenshot-14-1024x576.png"),
+            Enclosure(area="coop", image="https://images.squarespace-cdn.com/content/v1/55ef0e29e4b099e22cdc9eea/1525165173955-FP3OJ2S7JXO4Z3SIGV7A/image-asset.jpeg?format=500w"),
+            Enclosure(area="house", image="https://stardewcommunitywiki.com/mediawiki/images/3/30/House_%28tier_1%29.png")
         ]
 
         db.session.add_all(enclosures)
