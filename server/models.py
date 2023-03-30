@@ -31,7 +31,7 @@ class Animal(db.Model):
             'species': self.species,
             'age': self.age,
             'image': self.image,
-            'enclosures': [e.to_dict() for e in self.enclosures]
+            # 'enclosures': [e.to_dict() for e in self.enclosures]
         }
 
     def __repr__(self):

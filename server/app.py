@@ -29,11 +29,26 @@ def home():
     return ''
 
 
-@app.route('/animals', methods=['GET'])
+@app.route('/animals', methods=['GET', 'POST'])
 def animals():
     animals = Animal.query.all()
-    animal_dicts = [animal.to_dict() for animal in animals]
-    return make_response(jsonify(animal_dicts), 200)
+
+    if request.method == 'GET':
+        animal_dicts = [animal.to_dict() for animal in animals]
+        return make_response(jsonify(animal_dicts), 200)
+
+    elif request.method == 'POST':
+        body = request.get_json()
+        new_animal = Animal(
+            name = body['name'],
+            species = body['species'],
+            age = body['age'],
+            image = body['image']
+        )
+
+        db.session.add(new_animal)
+        db.session.commit()
+        return make_response(jsonify(new_animal.to_dict()), 201)
 
 
 @app.route('/animals/<int:id>', methods=['GET', 'DELETE'])
@@ -43,17 +58,31 @@ def animal_by_id(id):
         return make_response(jsonify({'error': 'Animal not found'}), 404)
     if request.method == 'GET':
         return make_response(jsonify(animal.to_dict()), 200)
+
     elif request.method == 'DELETE':
         db.session.delete(animal)
         db.session.commit()
         return make_response(jsonify({}), 200)
 
 
-@app.route('/enclosures', methods=['GET'])
+@app.route('/enclosures', methods=['GET', 'POST'])
 def enclousures():
     enclosures = Enclosure.query.all()
-    enclousure_dicts = [enclosure.to_dict() for enclosure in enclosures]
-    return make_response(jsonify(enclousure_dicts), 200)
+
+    if request.method == 'GET':
+        enclousure_dicts = [enclosure.to_dict() for enclosure in enclosures]
+        return make_response(jsonify(enclousure_dicts), 200)
+    
+    elif request.method == 'POST':
+        body = request.get_json()
+        new_enclosure = Enclosure(
+            area = body['area'],
+            image = body['image']
+        )
+
+        db.session.add(new_enclosure)
+        db.session.commit()
+        return make_response(jsonify(new_enclosure.to_dict()), 201)
 
 
 @app.route('/enclosures/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
