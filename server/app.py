@@ -56,7 +56,7 @@ def enclousures():
     return make_response(jsonify(enclousure_dicts), 200)
 
 
-@app.route('/enclosures/<int:id>', methods=['GET', 'PATCH'])
+@app.route('/enclosures/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
 def enclousures_by_id(id):
     enclosure = Enclosure.query.filter(Enclosure.id == id).first()
     if enclosure is None:
@@ -67,9 +67,14 @@ def enclousures_by_id(id):
         body = request.get_json()
         for field, value in body.items():
             setattr(enclosure, field, value)
-    db.session.add(enclosure)
-    db.session.commit()
-    return make_response(jsonify(enclosure.to_dict()), 200)
+        db.session.add(enclosure)
+        db.session.commit()
+        return make_response(jsonify(enclosure.to_dict()), 200)
+
+    elif request.method == 'DELETE':
+        db.session.delete(enclosure)
+        db.session.commit()
+        return make_response(jsonify({}), 200)
 
 
 @app.route('/animal_enclosures', methods=['POST'])
