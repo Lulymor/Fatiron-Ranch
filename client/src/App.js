@@ -1,12 +1,12 @@
 import React from "react";
+import Header from "./Header";
 import AnimalPage from "./AnimalPage";
-import EnclosurePage from "./EnclosurePage";
 
 function App() {
   return (
     <div className="app">
+      <Header />
       <AnimalPage />
-      <EnclosurePage />
     </div>
   );
 }

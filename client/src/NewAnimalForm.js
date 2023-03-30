@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+
+//when the app starts, I can see all the plants
+//I can add a new plant to the page by submitting the form.
 
 function NewAnimalForm({ onAdd }) {
   const [species, setSpecies] = useState("");
@@ -28,13 +30,13 @@ function NewAnimalForm({ onAdd }) {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="species"
-          placeholder="species"
+          name="species type"
+          placeholder="Species Type"
           value={species}
           onChange={(event) => setSpecies(event.target.value)}
         />
         <input
-          type="number"
+          type="text"
           name="age"
           placeholder="age"
           value={age}
@@ -48,9 +50,7 @@ function NewAnimalForm({ onAdd }) {
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
-        <Button type="submit" variant="light">
-          Add Animal
-        </Button>
+        <button type="submit">Add Animal</button>
       </form>
     </div>
   );

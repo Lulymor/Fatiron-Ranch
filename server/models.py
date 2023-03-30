@@ -43,6 +43,7 @@ class Enclosure(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     area = db.Column(db.String)
+    image = db.Column(db.String)
 
     animals_enclosures = db.relationship(
         'AnimalEnclosure', backref='enclosure')
@@ -53,6 +54,7 @@ class Enclosure(db.Model):
         return {
             'id': self.id,
             'area': self.area,
+            'image': self.image
         }
 
     def __repr__(self):

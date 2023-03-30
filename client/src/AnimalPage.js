@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from "react";
 import NewAnimalForm from "./NewAnimalForm";
 import AnimalList from "./AnimalList";
-import Headers from "./Headers";
+import Search from "./Search";
+
 function AnimalPage() {
   const [animals, setAnimals] = useState([]);
-  const [search, setSearch] = useState("");
 
   function handleAddAnimal(newAnimal) {
     const updatedAnimal = [newAnimal, ...animals];
     setAnimals(updatedAnimal);
   }
-  
   useEffect(() => {
-    fetch("http://localhost:4444/animals")
+    fetch("http://localhost:5555/animals")
       .then((res) => res.json())
-      .then((data) => setAnimals(data));
+      .then((data) => console.log(data));
   }, []);
 
   return (
     <main>
-      <Headers setSearch={setSearch} />
       <NewAnimalForm onAdd={handleAddAnimal} />
-      <AnimalList animals={animals} search={search} setAnimals={setAnimals} />
+      <Search />
+      <AnimalList animals={animals} />
     </main>
   );
 }
