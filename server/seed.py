@@ -25,7 +25,7 @@ if __name__ == '__main__':
         print("Seeding enclosures...")
         enclosures = [
             Enclosure(area="barn", image='https://ih1.redbubble.net/image.746325132.4879/st,small,507x507-pad,600x600,f8f8f8.jpg'),
-            Enclosure(area="stable", image="https://stardewguide.com/wp-content/uploads/2022/01/Screenshot-14-1024x576.png"),
+            Enclosure(area="stable", image="https://ih1.redbubble.net/image.2943489867.8384/mwo,x540,ipad_2_snap-pad,600x600,f8f8f8.jpg"),
             Enclosure(area="coop", image='https://ih1.redbubble.net/image.463865154.4785/st,small,507x507-pad,600x600,f8f8f8.u3.jpg'),
             Enclosure(area="house", image='https://ih1.redbubble.net/image.2356108967.2600/st,small,507x507-pad,600x600,f8f8f8.jpg')
         ]
