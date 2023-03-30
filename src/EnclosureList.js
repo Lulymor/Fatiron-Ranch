@@ -7,6 +7,12 @@ function EnclosureList({ enclosures, search }) {
     return areaSearch.includes(search.toLowerCase());
   });
 
+  // function AnimalList({ animals, search }) {
+  //   const filteredAnimals = animals.filter((animal) => {
+  //     const speciesSearch = animal.species.toLowerCase();
+  //     return speciesSearch.includes(search.toLowerCase());
+  //   });
+
   return (
     <ul className="cards">
       {filteredEnclosures.map((enclosure) => {

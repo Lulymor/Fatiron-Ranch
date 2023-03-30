@@ -8,7 +8,7 @@ function EnclosureCard({ area, image }) {
   return (
     <li className="card">
       <img src={image}></img>
-      <h4>Area: {area}</h4>
+      <h4>{area}</h4>
       <button class="primary" onClick={handleClick}>
         Delete
       </button>

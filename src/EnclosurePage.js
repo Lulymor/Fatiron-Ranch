@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NewEnclosureForm from "./NewEnclosureForm";
 import EnclosureList from "./EnclosureList";
-import Headers from "./Headers";
+// import Headers from "./Headers";
 function EnclosurePage() {
   const [enclosures, setEnclosures] = useState([]);
   const [search, setSearch] = useState("");
@@ -18,8 +18,7 @@ function EnclosurePage() {
 
   return (
     <main>
-      <Headers setSearch={setSearch} />
-      <NewEnclosureForm onAdd={handleAddEnclosure} />
+      <NewEnclosureForm onAdd={handleAddEnclosure} setSearch={setSearch}/>
       <EnclosureList enclosures={enclosures} search={search} setEnclosures={setEnclosures} />
     </main>
   );
