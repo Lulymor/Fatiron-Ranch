@@ -34,7 +34,7 @@ function NewAnimalForm({ onAdd }) {
           onChange={(event) => setSpecies(event.target.value)}
         />
         <input
-          type="text"
+          type="number"
           name="age"
           placeholder="age"
           value={age}

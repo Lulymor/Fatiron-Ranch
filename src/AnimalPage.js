@@ -10,8 +10,9 @@ function AnimalPage() {
     const updatedAnimal = [newAnimal, ...animals];
     setAnimals(updatedAnimal);
   }
+  
   useEffect(() => {
-    fetch("http://localhost:5555/animals")
+    fetch("http://localhost:4444/animals")
       .then((res) => res.json())
       .then((data) => setAnimals(data));
   }, []);

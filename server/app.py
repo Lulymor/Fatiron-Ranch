@@ -15,7 +15,13 @@ app.json.compact = False
 migrate = Migrate(app, db)
 
 db.init_app(app)
-CORS(app)
+CORS(app, origins='*')
+
+# @app.after_request
+# def add_cors_headers(response):
+#     response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+#     response.headers['Access-Control-Allow-Methods'] = 'DELETE'
+#     return response
 
 
 @app.route('/')
@@ -30,13 +36,17 @@ def animals():
     return make_response(jsonify(animal_dicts), 200)
 
 
-@app.route('/animals/<int:id>', methods=['GET'])
+@app.route('/animals/<int:id>', methods=['GET', 'DELETE'])
 def animal_by_id(id):
     animal = Animal.query.filter(Animal.id == id).first()
     if animal is None:
         return make_response(jsonify({'error': 'Animal not found'}), 404)
-    else:
+    if request.method == 'GET':
         return make_response(jsonify(animal.to_dict()), 200)
+    elif request.method == 'DELETE':
+        db.session.delete(animal)
+        db.session.commit()
+        return make_response(jsonify({}), 200)
 
 
 @app.route('/enclosures', methods=['GET'])
