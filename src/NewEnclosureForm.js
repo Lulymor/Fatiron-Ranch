@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-function NewEnclosureForm({ onAdd, setSearch }) {
+function NewEnclosureForm({ onAdd }) {
   const [area, setArea] = useState("");
   const [image, setImage] = useState("");
 

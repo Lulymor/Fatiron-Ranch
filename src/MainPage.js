@@ -36,6 +36,9 @@ function MainPage() {
   return (
     <main>
       <Switch>
+        <Route exact path="/">
+          <Headers />
+        </Route>
         <Route exact path="/animal/new">
           <Headers />
           <NewAnimalForm onAdd={handleAddAnimal} />

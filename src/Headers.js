@@ -20,14 +20,14 @@ function Headers() {
             Animals
           </Button>{" "}
           <Button variant="light" href="/animal/new">
-            Buy new Animal
+            Add new Animal
           </Button>{" "}
           <Button variant="light" href="/enclosure/new">
             Create new Enclosure
           </Button>{" "}
-          <Button variant="light" href="/login">
+          {/* <Button variant="light" href="/login">
             LogIn
-          </Button>{" "}
+          </Button>{" "} */}
         </div>
       </header>
     </>
