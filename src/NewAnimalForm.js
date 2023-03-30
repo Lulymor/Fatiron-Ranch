@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-
 function NewAnimalForm({ onAdd }) {
   const [species, setSpecies] = useState("");
   const [age, setAge] = useState("");
   const [name, setName] = useState("");
-
+  const [image, setImage] = useState("");
   function handleSubmit(event) {
     event.preventDefault();
-    fetch("http://localhost:3000/animals", {
+    fetch("http://127.0.0.1:5555/animals", {
       method: "POST",
       headers: {
-        "Content-Type": "application /json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         species: species,
         age: age,
         name: name,
+        image: image,
       }),
     })
       .then((res) => res.json())
@@ -48,6 +48,13 @@ function NewAnimalForm({ onAdd }) {
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
+        <input
+          type="text"
+          name="enclosure photo"
+          placeholder="photo"
+          value={image}
+          onChange={(event) => setImage(event.target.value)}
+        />
         <Button type="submit" variant="light">
           Add Animal
         </Button>
@@ -55,5 +62,4 @@ function NewAnimalForm({ onAdd }) {
     </div>
   );
 }
-
 export default NewAnimalForm;
