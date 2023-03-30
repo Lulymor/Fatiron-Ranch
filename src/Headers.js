@@ -1,8 +1,5 @@
 import Button from "react-bootstrap/Button";
-function Headers({ setSearch }) {
-  function handleChange(event) {
-    setSearch(event.target.value);
-  }
+function Headers() {
   function handleClick(event) {
     event.preventDefault();
   }
@@ -19,21 +16,18 @@ function Headers({ setSearch }) {
           <Button variant="light" href="/enclosures">
             Enclosures
           </Button>{" "}
+          <Button variant="light" href="/animals">
+            Animals
+          </Button>{" "}
           <Button variant="light" href="/animal/new">
             Buy new Animal
           </Button>{" "}
-          <Button variant="light" href="login">
+          <Button variant="light" href="/enclosure/new">
+            Create new Enclosure
+          </Button>{" "}
+          <Button variant="light" href="/login">
             LogIn
           </Button>{" "}
-        </div>
-        <div className="searchbar">
-          <label htmlFor="search">Search Animals:</label>
-          <input
-            type="text"
-            id="search"
-            placeholder="search for a species of animal..."
-            onChange={handleChange}
-          />
         </div>
       </header>
     </>
